@@ -52,7 +52,7 @@ body {
                 
     /* 마우스 오버 시 일어날 부드러운 애니메이션 변화 시간(0.3초)을 미리 예약합니다. */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 90%;
+    width: 95%; /* 모바일에서 꽉 차게 약간 더 넓힘 */
     max-width: 800px;
     box-sizing: border-box;
 }
@@ -82,12 +82,34 @@ h1 {
 /* 실제 캔버스 도화지 스타일입니다. */
 canvas {
     display: block;
+    width: 100%; /* 컨테이너 너비에 맞춰 축소/확대 */
+    height: auto; /* 고유 비율(4:3) 유지 */
+    aspect-ratio: 4 / 3; /* 명시적으로 4:3 비율 설정 */
+    max-height: 75vh; /* 세로가 짧은 폰에서도 화면 밖으로 나가지 않도록 제한 */
+    object-fit: contain; /* 비율을 유지하면서 주어진 영역 안에 딱 맞게 조정 */
+    touch-action: none; /* 모바일에서 터치 시 화면 스크롤/줌 방지 */
+    
     border-radius: 12px;                            /* 캔버스 모서리도 둥글게 깎아줍니다. */
     
     /* 어두운 캔버스의 입체감을 주기 위해 안쪽과 바깥쪽 그림자를 세팅합니다. */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     background-color: #000000;                      /* 캔버스 자체의 물리적 배경은 검은색 */
+}
+
+/* 스마트폰 미디어 쿼리 추가: 작은 화면에서는 여백을 줄이고 화면을 최대한 활용합니다. */
+@media (max-width: 600px) {
+    .game-container {
+        width: 100%;
+        padding: 1rem; /* 여백 축소 */
+        border-radius: 0;
+        border: none;
+    }
+    
+    h1 {
+        font-size: 2rem; /* 제목 크기 약간 축소 */
+        margin-bottom: 1rem;
+    }
 }
 
 /* 하단의 안내 조작 문구 디자인입니다. */
