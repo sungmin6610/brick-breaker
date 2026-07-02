@@ -82,12 +82,13 @@ h1 {
 /* 실제 캔버스 도화지 스타일입니다. */
 canvas {
     display: block;
-    border-radius: 12px;                            /* 캔버스 모서리도 둥글게 깎아줍니다. */
-    
-    /* 어두운 캔버스의 입체감을 주기 위해 안쪽과 바깥쪽 그림자를 세팅합니다. */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-    background-color: #000000;                      /* 캔버스 자체의 물리적 배경은 검은색 */
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 12px; /* 캔버스 모서리도 둥글게 깎아줍니다. */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    background-color: #000000; /* 캔버스 자체의 물리적 배경은 검은색 */
+    touch-action: none; /* 터치 시 기본 스크롤/줌 방지 */
 }
 
 /* 하단의 안내 조작 문구 디자인입니다. */
